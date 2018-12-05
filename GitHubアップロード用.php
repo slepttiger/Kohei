@@ -108,6 +108,7 @@ if($row['password']==$Epassword){
 $edit_number=$row['id'];
 $edit_name=$row['name'];
 $edit_comment=$row['comment'];
+$edit_password=$row['password'];
 }
 else{
 echo "パスワードが違います。";
@@ -120,7 +121,7 @@ echo "パスワードが違います。";
 //編集実行
 if(!empty($_POST["name"]) && !empty($_POST["comment"]) && !empty($_POST["number"])){
 
-$sql="update newtable set name='$name',comment='$comment',date='$date' where id=$number";
+$sql="update newtable set name='$name',comment='$comment',date='$date',password='$Tpassword' where id=$number";
 $result=$pdo->query($sql);
 
 }
@@ -136,7 +137,7 @@ $result=$pdo->query($sql);
    <form action="mission_4-1.php" method="post">
    <input type="text" name="name" placeholder="名前" value=<?php echo $edit_name; ?>><br>
    <input type="text" name="comment" placeholder="コメント" value=<?php echo $edit_comment; ?>><br>
-   <input type="text" name="Tpassword" placeholder="パスワード">
+   <input type="text" name="Tpassword" placeholder="パスワード" value=<?php echo $edit_password; ?>>
    <input type="hidden" name="number" value=<?php echo $edit_number; ?>>
    <input type="submit" value="送信"><br><br>
    <input type="text" name="delete" placeholder="削除対象番号"><br>
